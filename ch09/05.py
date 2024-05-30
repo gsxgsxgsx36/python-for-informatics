@@ -17,7 +17,7 @@ Enter a file name: mbox-short.txt
 {'media.berkeley.edu': 4, 'uct.ac.za': 6, 'umich.edu': 7,
 'gmail.com': 1, 'caret.cam.ac.uk': 1, 'iupui.edu': 8}
 '''
-
+'''
 file_name = raw_input("Enter a file name: ")
 lines = [line.strip('\n') for line in open(file_name, 'r')
          if line.startswith("From ")]
@@ -30,3 +30,17 @@ for line in lines:
     who_from_dict[domain] = who_from_dict.get(domain, 0) + 1
 
 print who_from_dict
+'''
+file = input("Enter a file NAME = ")
+
+try:
+    filehandle= open(file)
+except:
+    print( "file not found ")
+
+dmaindict=dict()
+for line in filehandle:
+    if not line.startswith("From "):continue
+    dmain=line[(line.find("@")+1):(line.find(" ",(line.find("@"))))]
+    dmaindict[dmain]=dmaindict.get(dmain,0)+1       
+print(dmaindict)
